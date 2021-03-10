@@ -1,18 +1,24 @@
 cmake_minimum_required(VERSION 3.7)
 
-add_definitions(-std=c++17)
-
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 
-project(SDL2Test)
+add_definitions(-DBOOST_DATE_TIME_NO_LIB)
+add_definitions(-D_WIN32_WINDOWS)
+add_definitions(-D_WINSOCK_DEPRECATED_NO_WARNINGS)
+
+project(BlockchainMatrix)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 set(SDL2_DIR "./SDL2-2.0.14")
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS} src)
 
-add_executable(SnakeGame src/main.cpp    )
+set(OPENSSL_ROOT_DIR "./openssl")
+find_package(OpenSSL REQUIRED)
+include_directories(${SDL2_INCLUDE_DIRS} ${OPENSSL_INCLUDE_DIR} "./boost_1_75_0/" "./beast/include/" src)
+
+add_executable(BlockchainMatrix src/main.cpp "src/root_certificates.hpp")
+
 string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
-target_link_libraries(SnakeGame ${SDL2_LIBRARIES})
+target_link_libraries(BlockchainMatrix ${SDL2_LIBRARIES} ${OPENSSL_LIBRARIES})
