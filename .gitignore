@@ -1,3 +1,5 @@
 .vs
 out
 SDL2-2.0.14
+build
+.vscode
