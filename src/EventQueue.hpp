@@ -32,7 +32,7 @@ public:
         std::lock_guard<std::mutex> uLock(_mutex);
 
         // add deque to queue
-        std::cout << "  AEvent '" << ev->ToString() << "' is added to the queue" << std::endl;
+        // std::cout << "  AEvent '" << ev->ToString() << "' is added to the queue" << std::endl;
         _events.emplace_back(std::move(ev));
     }
 

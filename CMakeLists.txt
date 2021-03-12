@@ -16,9 +16,12 @@ find_package(SDL2 REQUIRED)
 
 set(OPENSSL_ROOT_DIR "./openssl")
 find_package(OpenSSL REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS} ${OPENSSL_INCLUDE_DIR} "./boost_1_75_0/" "./beast/include/" src)
+
+include_directories(${SDL2_INCLUDE_DIRS} ${OPENSSL_INCLUDE_DIR} "./boost_1_75_0/" "./beast/include/" "SDL2_image-2.0.5/include" src)
+
+find_library(SDL2_IMAGE SDL_image "SDL2_image-2.0.5/lib/x64/")
 
 add_executable(BlockchainMatrix src/main.cpp "src/root_certificates.hpp" "src/App.hpp" "src/App.cpp" "src/SDLException.hpp" "src/Backend.hpp" "src/Backend.cpp" "src/Renderer.hpp" "src/Renderer.cpp" "src/Symbol.hpp" "src/Symbol.cpp")
 
 string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
-target_link_libraries(BlockchainMatrix ${SDL2_LIBRARIES} ${OPENSSL_LIBRARIES})
+target_link_libraries(BlockchainMatrix ${SDL2_LIBRARIES} ${OPENSSL_LIBRARIES} ${SDL2_IMAGE})

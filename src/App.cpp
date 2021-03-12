@@ -85,7 +85,7 @@ void App::ProcessBackendEvents(Renderer &renderer)
     {
         std::unique_ptr<AEvent> ev(_events->get());
 
-        std::cout << "Main thread is processing " << ev->ToString() << "\n";
+        // std::cout << "Main thread is processing " << ev->ToString() << "\n";
         renderer.AddSymbol();
     }
 }

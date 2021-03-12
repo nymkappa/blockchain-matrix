@@ -1,11 +1,44 @@
 #include <iostream>
 #include "Symbol.hpp"
+#include "SDLException.hpp"
 
-Symbol::Symbol(int x, int y, int size, char symbol) : _x(x), _y(y), _size(size), _symbol(symbol)
+Symbol::Symbol()
 {
-    std::cout << "Create symbol at [" << _x << ", " << y << "], size " << _size << " with symbol '" << _symbol << "'\n";
+    _x = rand() % 800;
+    _y = (float)(-rand() % 2000);
+    _size = 10 + rand() % 10;
+    _speed = 0.5f + (rand() % 100) / 100.0f;
+}
 
-    _red = rand() % 255;
-    _green = rand() % 255;
-    _blue = rand() % 255;
+Symbol::~Symbol()
+{
+}
+
+Symbol::Symbol(Symbol &&s)
+{
+    _x = s._x;
+    _y = s._y;
+    _size = s._size;
+    _speed = s._speed;
+}
+
+Symbol& Symbol::operator=(Symbol&& s)
+{
+    _x = s._x;
+    _y = s._y;
+    _size = s._size;
+    _speed = s._speed;
+
+    return *this;
+}
+
+void Symbol::Update(double deltaTime)
+{
+    _y += (float)(100.0 * deltaTime) * _speed;
+}
+
+void Symbol::Draw(SDL_Renderer *sldRenderer, SDL_Texture *texture)
+{
+    SDL_Rect fillRect = {_x, (int)_y, _size, _size};
+    SDL_RenderCopy(sldRenderer, texture, NULL, &fillRect);
 }

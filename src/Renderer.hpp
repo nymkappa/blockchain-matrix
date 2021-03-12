@@ -15,6 +15,7 @@ public:
     void Render();
     void Exit();
 
+    SDL_Texture* LoadTexture(std::string path);
     void AddSymbol();
 
 private:
@@ -23,4 +24,7 @@ private:
     // Ressource managed by SDL
     SDL_Window *_sdlWindow;
     SDL_Renderer *_sdlRenderer;
+    SDL_Texture *_sdlTexture;
+
+    std::chrono::time_point<std::chrono::system_clock> _start;
 };

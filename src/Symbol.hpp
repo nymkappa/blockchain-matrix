@@ -1,17 +1,25 @@
 #pragma once
 
+#include <chrono>
+#include "SDL.h"
+
 class Symbol
 {
 public:
-    Symbol(int x, int y, int size, char symbol);
-    void Draw();
+    Symbol();
+    ~Symbol();
+
+    Symbol(Symbol &&);
+    Symbol &operator=(Symbol &&other);
+
+    void Update(double deltaTime);
+    void Draw(SDL_Renderer* sldRenderer, SDL_Texture *texture);
 
 public:
-    char _symbol;
+    float _y;
+
+private:
+    float _speed;
     int _x;
-    int _y;
     int _size;
-    unsigned char _red;
-    unsigned char _green;
-    unsigned char _blue;
 };
