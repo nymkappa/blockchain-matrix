@@ -113,7 +113,6 @@ void Backend::Run()
 
         std::cout << "Socket connection established!\n";
 
-        // Send the message
         ws.write(net::buffer(std::string(text)));
 
         // This buffer will hold the incoming message

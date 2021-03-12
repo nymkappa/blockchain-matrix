@@ -1,32 +1,29 @@
 #include <string>
 #include <exception>
 #include "App.hpp"
-#include "SDLException.hpp"
+#include "Renderer.hpp"
 
 App::App()
 {
     std::cout << "App constructor\n";
-
-    _window = nullptr;
     _exitFlag = false;
 }
 
 void App::Init()
 {
-    InitSDL();
     InitBackend();
     InitEventQueue();
 }
 
 void App::Exit()
 {
-    SDL_DestroyWindow(_window);
     SDL_Quit();
 }
 
 void App::Run()
 {
     SDL_Event e;
+    Renderer renderer;
 
     while (!_exitFlag)
     {
@@ -38,38 +35,14 @@ void App::Run()
             }
         }
 
-        ProcessBackendEvents();
+        ProcessBackendEvents(renderer);
+
+        renderer.Render();
     }
 
     // Terminate backend thread
     _backend->Exit();
     _backendThread.join();
-}
-
-/**
- * Initialize SDL library and create a window
- */
-void App::InitSDL()
-{
-    //Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        throw SDLException("SDL could not initialize! SDL_Error:" + std::string(SDL_GetError()));
-    }
-
-    // Create the window - Ressource is managed by SDL
-    _window = SDL_CreateWindow(
-        "BlockchainMatrix",
-        SDL_WINDOWPOS_UNDEFINED,
-        SDL_WINDOWPOS_UNDEFINED,
-        800,
-        600,
-        SDL_WINDOW_SHOWN);
-
-    if (_window == NULL)
-    {
-        throw SDLException("Window could not be created! SDL_Error:" + std::string(SDL_GetError()));
-    }
 }
 
 /**
@@ -101,7 +74,7 @@ void App::InitEventQueue()
 /**
  * Process currently pending backend events
  */
-void App::ProcessBackendEvents()
+void App::ProcessBackendEvents(Renderer &renderer)
 {
     if (_events == nullptr)
     {
@@ -113,5 +86,6 @@ void App::ProcessBackendEvents()
         std::unique_ptr<AEvent> ev(_events->get());
 
         std::cout << "Main thread is processing " << ev->ToString() << "\n";
+        renderer.AddSymbol();
     }
 }

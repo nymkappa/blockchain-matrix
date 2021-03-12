@@ -6,6 +6,7 @@
 #include "SDL.h"
 #include "Backend.hpp"
 #include "EventQueue.hpp"
+#include "Renderer.hpp"
 
 #undef main // We don't need SDL default main function
 
@@ -19,14 +20,12 @@ public:
     void Exit();
 
 private:
-    void InitSDL();
     void InitBackend();
     void InitEventQueue();
-    void ProcessBackendEvents();
+    void ProcessBackendEvents(Renderer &renderer);
 
 private:
     bool _exitFlag;
-    SDL_Window *_window; // Ressource is managed by SDL
 
     std::thread _backendThread;
     std::shared_ptr<Backend> _backend;
