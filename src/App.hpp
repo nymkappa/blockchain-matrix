@@ -13,11 +13,10 @@
 class App {
 public:
     App();
-    ~App() { std::cout << "App destructor\n"; }
+    ~App();
 
     void Init();
 	void Run();
-    void Exit();
 
 private:
     void InitBackend();

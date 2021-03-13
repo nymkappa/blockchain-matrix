@@ -39,13 +39,6 @@ Backend::Backend()
     _exitFlag = false;
 }
 
-/**
- * Connect to the websocket and perform the handshake
- */
-void Backend::Init()
-{
-}
-
 void Backend::Run()
 {
     if (_events == nullptr)
@@ -123,7 +116,7 @@ void Backend::Run()
         {
             ws.read(buffer);
             std::string s(beast::buffers_to_string(buffer.data()));
-            std::vector<std::string> splitted = Split(s, "}{");
+            std::vector<std::string> splitted = Split(std::move(s), "}{");
 
             for (size_t i = 0; i < splitted.size(); ++i)
             {
@@ -152,7 +145,7 @@ void Backend::Run()
 /**
  * When we receive multiple json object, we need to split them before parsing them
  */
-std::vector<std::string> Backend::Split(std::string s, std::string delimiter)
+std::vector<std::string> Backend::Split(std::string&& s, std::string delimiter)
 {
     std::vector<std::string> jsons;
 

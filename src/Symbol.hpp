@@ -7,19 +7,19 @@ class Symbol
 {
 public:
     Symbol();
-    ~Symbol();
-
+    Symbol(const Symbol &);
     Symbol(Symbol &&);
-    Symbol &operator=(Symbol &&other);
+    Symbol &operator=(const Symbol &);
+    Symbol &operator=(Symbol &&);
 
     void Update(double deltaTime);
-    void Draw(SDL_Renderer* sldRenderer, SDL_Texture *texture);
+    void Draw(SDL_Renderer *sldRenderer, SDL_Texture *texture);
 
-public:
-    float _y;
+    float GetY() { return _y; }
 
 private:
     float _speed;
     int _x;
+    float _y;
     int _size;
 };

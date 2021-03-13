@@ -10,8 +10,12 @@ Symbol::Symbol()
     _speed = 0.5f + (rand() % 100) / 100.0f;
 }
 
-Symbol::~Symbol()
+Symbol::Symbol(const Symbol &s)
 {
+    _x = s._x;
+    _y = s._y;
+    _size = s._size;
+    _speed = s._speed;
 }
 
 Symbol::Symbol(Symbol &&s)
@@ -22,7 +26,17 @@ Symbol::Symbol(Symbol &&s)
     _speed = s._speed;
 }
 
-Symbol& Symbol::operator=(Symbol&& s)
+Symbol &Symbol::operator=(const Symbol &s)
+{
+    _x = s._x;
+    _y = s._y;
+    _size = s._size;
+    _speed = s._speed;
+
+    return *this;
+}
+
+Symbol &Symbol::operator=(Symbol &&s)
 {
     _x = s._x;
     _y = s._y;

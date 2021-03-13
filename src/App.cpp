@@ -9,15 +9,15 @@ App::App()
     _exitFlag = false;
 }
 
+App::~App()
+{
+    SDL_Quit();
+}
+
 void App::Init()
 {
     InitBackend();
     InitEventQueue();
-}
-
-void App::Exit()
-{
-    SDL_Quit();
 }
 
 void App::Run()
@@ -52,8 +52,6 @@ void App::Run()
 void App::InitBackend()
 {
     _backend = std::make_shared<Backend>();
-    _backend->Init();
-
     _backendThread = std::thread(&Backend::Run, _backend);
 }
 

@@ -13,16 +13,14 @@ class Backend
 {
 public:
     Backend();
-    ~Backend() { std::cout << "Backend destructor\n"; }
 
-    void Init();
     void Run();
     void Exit();
 
     void SetEventQueue(std::shared_ptr<EventQueue> events) { _events = events; }
 
 private:
-    std::vector<std::string> Split(std::string s, std::string delimiter);
+    std::vector<std::string> Split(std::string&& s, std::string delimiter);
 
 public:
     bool _exitFlag;

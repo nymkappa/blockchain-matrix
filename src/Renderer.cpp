@@ -99,6 +99,7 @@ void Renderer::AddSymbol()
 
 void Renderer::Render()
 {
+    const int OFF_SCREEN_Y = 900;
     static float framePerSeconds = 30.0;
 
     // Clear screen
@@ -128,7 +129,7 @@ void Renderer::Render()
         s.Draw(_sdlRenderer, _sdlTexture);
 
         // When a symbol is out of the screen, we don't need it anymore
-        if (s._y > 900)
+        if (s.GetY() > OFF_SCREEN_Y)
         {
             it = _symbols.erase(it);
         }
