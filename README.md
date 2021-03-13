@@ -23,3 +23,32 @@ A real time visualizer of blockchain transactions. Each Bitcoin represents a new
   * Install boost dependency `git clone --branch boost-1.75.0 https://github.com/boostorg/boost.git`
   * Install beast dependency `git clone --branch boost-1.75.0 https://github.com/boostorg/beast.git`
   * You can just clone the source code direclty in the root folder or install it on your system
+
+## Build
+
+* `mkdir build`
+* `cd build`
+* `cmake ..`
+* Compile
+  * Linux: `make`
+  * Windows: Open the .sln project and compile using Visual Studio Community 2019+ or use Visual Studio Code with CMake extensions
+
+## Run
+
+If you are Windows, before running the application you will need to copy all the requires .dll next to the generated .exe file:
+
+* SDL
+  * `SDL2.dll`
+* SDL_Image
+  *`libjpeg-9.dll`
+  * `libpng16-16.dll`
+  * `libtiff-5.dll`
+  * `libwebp-7.dll`
+  * `zlib1.dll`
+* OpenSSL
+  * `libssl-1_1-x64.dll`
+  * `libcrypto-1_1-x64.dll`
+
+Before running the application, copy `btc.png` next to the compiled executable.
+
+You should be good to go now :).
