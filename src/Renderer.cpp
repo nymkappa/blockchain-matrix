@@ -116,7 +116,7 @@ void Renderer::Render()
         return;
     }
 
-    std::cout << "Render. Vector size " << _symbols.size() << "\n";
+    //std::cout << "Render. Vector size " << _symbols.size() << "\n";
 
     _start = std::chrono::system_clock::now();
 
