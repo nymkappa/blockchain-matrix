@@ -50,7 +50,7 @@ void Backend::Run()
 {
     if (_events == nullptr)
     {
-        throw std::exception("[Backend] Events queue has not been properly set");
+        throw std::runtime_error("[Backend] Events queue has not been properly set");
     }
 
     std::cout << "Backend thread starting\n";
@@ -141,7 +141,7 @@ void Backend::Run()
         // Close the WebSocket connection
         ws.close(websocket::close_code::normal);
     }
-    catch (std::exception const &e)
+    catch (std::runtime_error const &e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
     }

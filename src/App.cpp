@@ -64,7 +64,7 @@ void App::InitEventQueue()
 {
     if (_backend == nullptr)
     {
-        throw std::exception("Backend has not been initialized");
+        throw std::runtime_error("Backend has not been initialized");
     }
 
     _events = std::make_shared<EventQueue>();
@@ -78,7 +78,7 @@ void App::ProcessBackendEvents(Renderer &renderer)
 {
     if (_events == nullptr)
     {
-        throw std::exception("Events queue has not been initialized");
+        throw std::runtime_error("Events queue has not been initialized");
     }
 
     while (_events->dataIsAvailable())
