@@ -63,9 +63,8 @@ When you close the application window, the backend thread may still be waiting f
   * All installation instructions can be found [here](https://wiki.openssl.org/index.php/Compilation_and_Installation)
   * Note that for Linux, an `apt` or `apt-get` installation is preferred
 * Boost + Beast
-  * Install boost dependency `git clone --branch boost-1.75.0 https://github.com/boostorg/boost.git`
-  * Install beast dependency `git clone --branch boost-1.75.0 https://github.com/boostorg/beast.git`
-  * You can just clone the source code direclty in the root folder or install it on your system
+  * On Windows, just download boost from [here](https://www.boost.org/users/download/) and extract it to the project root in a "boost" folder
+  * Beast is already provided but you can replace it if needed by get the file from [githubg](https://github.com/boostorg/beast.git)
 
 ## Build
 
