@@ -11,17 +11,22 @@ project(BlockchainMatrix)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
-set(SDL2_DIR "./SDL2-2.0.14")
+set(SDL2_DIR "./SDL")
 find_package(SDL2 REQUIRED)
+
+set(SDL2_IMAGE_PATH "./SDL_image")
+find_package(SDL2_image REQUIRED)
 
 set(OPENSSL_ROOT_DIR "./openssl")
 find_package(OpenSSL REQUIRED)
 
-include_directories(${SDL2_INCLUDE_DIRS} ${OPENSSL_INCLUDE_DIR} "./boost_1_75_0/" "./beast/include/" "SDL2_image-2.0.5/include" src)
+set(Boost_INCLUDE_DIR "./boost")
+find_package(Boost)
 
-find_library(SDL2_IMAGE SDL_image "SDL2_image-2.0.5/lib/x64/")
+include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS} ${OPENSSL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS}
+    "./boost_1_75_0/" "./beast/include/" src)
 
 add_executable(BlockchainMatrix src/main.cpp "src/root_certificates.hpp" "src/App.hpp" "src/App.cpp" "src/SDLException.hpp" "src/Backend.hpp" "src/Backend.cpp" "src/Renderer.hpp" "src/Renderer.cpp" "src/Symbol.hpp" "src/Symbol.cpp")
 
 string(STRIP "${SDL2_LIBRARIES}" SDL2_LIBRARIES)
-target_link_libraries(BlockchainMatrix ${SDL2_LIBRARIES} ${OPENSSL_LIBRARIES} ${SDL2_IMAGE})
+target_link_libraries(BlockchainMatrix ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${OPENSSL_LIBRARIES})
