@@ -40,14 +40,20 @@ If you are Windows, before running the application you will need to copy all the
 * SDL
   * `SDL2.dll`
 * SDL_Image
-  *`libjpeg-9.dll`
   * `libpng16-16.dll`
-  * `libtiff-5.dll`
-  * `libwebp-7.dll`
   * `zlib1.dll`
 * OpenSSL
   * `libssl-1_1-x64.dll`
   * `libcrypto-1_1-x64.dll`
+
+On Windows, your `build\Debug` folder should look like this
+
+![image](https://user-images.githubusercontent.com/9780671/111022182-92adad00-8414-11eb-9196-99b14cec4de6.png).
+
+On Linux, your `build` folder should look like this
+
+![image](https://user-images.githubusercontent.com/9780671/111022234-df918380-8414-11eb-9ae0-84eac748bd5d.png)
+
 
 Before running the application, copy `btc.png` next to the compiled executable.
 
