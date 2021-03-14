@@ -55,16 +55,18 @@ When you close the application window, the backend thread may still be waiting f
   * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
 * SDL2 >= 2.0
   * All installation instructions can be found [here](https://wiki.libsdl.org/Installation)
-  * Note that for Linux, an `apt` or `apt-get` installation is preferred to building from source.
+  * Note that for Linux, running `sudo apt-get install libsdl2-dev` will do the trick.
 * SDL2_image >= 2.0
   * Doc can be found [here](https://www.libsdl.org/projects/SDL_image/)
-  * Note that for Linux, an `apt` or `apt-get` installation is preferred to building from source.
+  * Note that for Linux, running `sudo apt-get install libsdl2-image-dev` will do the trick.
 * OpenSSL >= 1.1
   * All installation instructions can be found [here](https://wiki.openssl.org/index.php/Compilation_and_Installation)
-  * Note that for Linux, an `apt` or `apt-get` installation is preferred
+  * Note that for Linux, running `sudo apt-get install libssl-dev` will do the trick.
 * Boost + Beast
-  * On Windows, just download boost from [here](https://www.boost.org/users/download/) and extract it to the project root in a "boost" folder
-  * Beast is already provided but you can replace it if needed by get the file from [githubg](https://github.com/boostorg/beast.git)
+  * [Windows + Linux] - Just download boost from [here](https://www.boost.org/users/download/) and extract it to the project root in a "boost" folder.
+  * Linux guide - Install Boost in the project, [here](https://www.boost.org/doc/libs/1_75_0/more/getting_started/unix-variants.html)
+  * Windows guide - Install Boost in the project, [here](https://www.boost.org/doc/libs/1_75_0/more/getting_started/windows.html)
+  * Beast is already provided in the repository, but you can replace it if needed by get the file from [githubg](https://github.com/boostorg/beast.git)
 
 ## Build
 
