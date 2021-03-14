@@ -66,7 +66,7 @@ When you close the application window, the backend thread may still be waiting f
   * [Windows + Linux] - Just download boost from [here](https://www.boost.org/users/download/) and extract it to the project root in a "boost" folder.
   * Linux guide - Install Boost in the project, [here](https://www.boost.org/doc/libs/1_75_0/more/getting_started/unix-variants.html)
   * Windows guide - Install Boost in the project, [here](https://www.boost.org/doc/libs/1_75_0/more/getting_started/windows.html)
-  * Beast is already provided in the repository, but you can replace it if needed by get the file from [githubg](https://github.com/boostorg/beast.git)
+  * Beast is already provided in the repository, but you can replace it if needed by get the file from [github](https://github.com/boostorg/beast.git)
 
 ## Build
 
